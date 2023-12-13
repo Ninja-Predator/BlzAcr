@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="CombatRoutine">
+      <HintPath>..\..\Program Files\Flash\最终幻想XIV\XIVLauncherCN\Roaming\devPlugins\AE\AEAssistCNVersion\AEAssist\CombatRoutine.dll</HintPath>
+    </Reference>
+    <Reference Include="Common">
+      <HintPath>..\..\Program Files\Flash\最终幻想XIV\XIVLauncherCN\Roaming\devPlugins\AE\AEAssistCNVersion\AEAssist\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ImGui.NET">
+      <HintPath>..\..\Fra\References\ImGui.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="ImGuiScene">
+      <HintPath>..\..\Program Files\Flash\最终幻想XIV\XIVLauncherCN\Roaming\addon\Hooks\dev\ImGuiScene.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Program Files\Flash\最终幻想XIV\XIVLauncherCN\Roaming\devPlugins\AE\AEAssistCNVersion\AEAssist\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
