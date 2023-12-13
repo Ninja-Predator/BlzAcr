@@ -9,18 +9,23 @@
   <ItemGroup>
     <Reference Include="CombatRoutine">
       <HintPath>..\..\Program Files\Flash\最终幻想XIV\XIVLauncherCN\Roaming\devPlugins\AE\AEAssistCNVersion\AEAssist\CombatRoutine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Common">
       <HintPath>..\..\Program Files\Flash\最终幻想XIV\XIVLauncherCN\Roaming\devPlugins\AE\AEAssistCNVersion\AEAssist\Common.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ImGui.NET">
       <HintPath>..\..\Fra\References\ImGui.NET.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ImGuiScene">
       <HintPath>..\..\Program Files\Flash\最终幻想XIV\XIVLauncherCN\Roaming\addon\Hooks\dev\ImGuiScene.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Program Files\Flash\最终幻想XIV\XIVLauncherCN\Roaming\devPlugins\AE\AEAssistCNVersion\AEAssist\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
 
