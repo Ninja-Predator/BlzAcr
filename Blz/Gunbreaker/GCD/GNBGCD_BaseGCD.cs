@@ -25,7 +25,7 @@ public class GNBGCD_BaseGCD : ISlotResolver
         if (Core.Get<IMemApiSpell>().GetLastComboSpellId() == SpellsDefine.KeenEdge)
         {
             if(Core.Me.ClassLevel < 88) {
-                if (Core.Get<IMemApiGunBreaker>().Ammo == 3)
+                if (Core.Get<IMemApiGunBreaker>().Ammo == 2)
                 {
                     if (SpellsDefine.NoMercy.GetSpell().CoolDownInGCDs(2) && !SpellsDefine.NoMercy.GetSpell().CoolDownInGCDs(1) && Qt.GetQt("±¬·¢"))
                         return SpellsDefine.KeenEdge.GetSpell();
@@ -33,7 +33,7 @@ public class GNBGCD_BaseGCD : ISlotResolver
             }
             else
             {
-                if (Core.Get<IMemApiGunBreaker>().Ammo == 2)
+                if (Core.Get<IMemApiGunBreaker>().Ammo == 3)
                 {
                     if (SpellsDefine.NoMercy.GetSpell().CoolDownInGCDs(2) && !SpellsDefine.NoMercy.GetSpell().CoolDownInGCDs(1) && Qt.GetQt("±¬·¢"))
                         return SpellsDefine.KeenEdge.GetSpell();
