@@ -62,7 +62,8 @@ public class OpenerGNB90 : IOpener
 
     private static void Step2(Slot slot)
     {
-        slot.Add(new Spell(SpellsDefine.SolidBarrel, SpellTargetType.Target)); 
+        slot.Add(new Spell(SpellsDefine.SolidBarrel, SpellTargetType.Target));
+        if (SpellsDefine.RoughDivide.IsReady()) slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
     }
 
 
