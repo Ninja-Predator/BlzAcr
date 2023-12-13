@@ -104,11 +104,13 @@ public class GunbreakerRotationEntry : IRotationEntry
         jobViewWindow.AddQt("爆发击", true);
         jobViewWindow.AddQt("闪雷弹", true);
         jobViewWindow.AddQt("最终爆发", false);
-        jobViewWindow.AddQt("突进开怪", true);
+        jobViewWindow.AddQt("起手突进开怪", false);
+        jobViewWindow.AddQt("突进全进无情", true);
+        jobViewWindow.AddQt("移动时不突进", true);
 
         jobViewWindow.AddHotkey("超火流星!", new HotKeyResolver_NormalSpell(16152, SpellTargetType.Self, true));
         jobViewWindow.AddHotkey("刚玉tt", new HotKeyResolver_NormalSpell(25758, SpellTargetType.TargetTarget, true));
-        jobViewWindow.AddHotkey("刚玉自己", new HotKeyResolver_NormalSpell(25758, SpellTargetType.TargetTarget, true));
+        jobViewWindow.AddHotkey("刚玉自己", new HotKeyResolver_NormalSpell(25758, SpellTargetType.Self, true));
         return true;
     }
 }

@@ -6,6 +6,7 @@ using CombatRoutine.View.JobView;
 using Common;
 using Common.Define;
 using Common.GUI;
+using Common.Helper;
 using Common.Language;
 using ImGuiNET;
 
@@ -82,7 +83,6 @@ public class GunbreakerOverlay
             ImGui.TreePop();
         }
 
-
         if (ImGui.TreeNode("技能释放"))
         {
             ImGui.Text($"上个技能：{Core.Get<IMemApiSpellCastSucces>().LastSpell}");
@@ -96,6 +96,13 @@ public class GunbreakerOverlay
             ImGui.Text($"小队人数：{PartyHelper.CastableParty.Count}");
             ImGui.Text($"小队坦克数量：{PartyHelper.CastableTanks.Count}");
             ImGui.TreePop();
+        }
+        if (ImGui.TreeNode("目标"))
+        {
+            ImGui.Text($"目标id：{Core.Me.GetCurrTarget().NpcId}");
+            ImGui.Text($"目标咏唱id：{Core.Me.GetCurrTarget().CastingSpellId}");
+            ImGui.Text($"目标咏唱：{Core.Me.GetCurrTarget().CastSpellLocalizedName}");
+            ImGui.Text($"目标上次咏唱id：{Core.Me.GetCurrTarget().LastSpellId}");
         }
     }
 

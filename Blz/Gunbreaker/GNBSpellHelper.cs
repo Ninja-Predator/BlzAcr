@@ -1,13 +1,19 @@
 using CombatRoutine;
+using CombatRoutine.Setting;
+using Common;
 using Common.Define;
+using Common.Helper;
 
 namespace Blz.Gunbreaker;
 
 public static class GNBSpellHelper
 {
-    public static Spell GetOpen()
+    public static Spell? GetOpen()
     {
-        if (Qt.GetQt("突进开怪")) return SpellsDefine.RoughDivide.GetSpell();
-        return SpellsDefine.LightningShot.GetSpell();
+        if (GNBSettings.Instance.TP && Core.Me.DistanceMelee(Core.Me.GetCurrTarget()) > 
+            SettingMgr.GetSetting<GeneralSettings>().AttackRange && Core.Me.GetCurrTarget().IsBoss())
+            Core.Get<IMemApiMove>().SetPos(Core.Me.GetCurrTarget().front());
+        if (Qt.GetQt("起手突进开怪")) return SpellsDefine.RoughDivide.GetSpell();
+        return null;
     }
 }

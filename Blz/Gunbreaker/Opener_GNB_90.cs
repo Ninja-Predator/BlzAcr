@@ -1,5 +1,6 @@
 ﻿using CombatRoutine;
 using CombatRoutine.Opener;
+using CombatRoutine.Setting;
 using Common;
 using Common.Define;
 using Common.Helper;
@@ -45,10 +46,8 @@ public class OpenerGNB90 : IOpener
 
     private static void Step0(Slot slot)
     {
-        if (GNBSettings.Instance.TP)
-        {
-            Core.Get<IMemApiMove>().SetPos(Core.Me.GetCurrTarget().front());
-        }
+/*        if (Qt.GetQt("TP开怪")&& Core.Me.DistanceMelee(Core.Me.GetCurrTarget()) > SettingMgr.GetSetting<GeneralSettings>().AttackRange)
+            Core.Get<IMemApiMove>().SetPos(Core.Me.GetCurrTarget().front());*/
         slot.Add(new Spell(SpellsDefine.KeenEdge, SpellTargetType.Target));
         slot.Add(new SlotAction(SlotAction.WaitType.WaitInMs, 500, SpellsDefine.NoMercy.GetSpell()));
     }
@@ -86,7 +85,7 @@ public class OpenerGNB90 : IOpener
     private static void Step5(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.SonicBreak, SpellTargetType.Target));
-        slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
+        if(SpellsDefine.RoughDivide.IsReady()) slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
         slot.Add(new Spell(SpellsDefine.BowShock, SpellTargetType.Target));
     }
 
