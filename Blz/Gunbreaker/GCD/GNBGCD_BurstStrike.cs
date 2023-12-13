@@ -31,15 +31,20 @@ public class GNBGCD_BurstStrike : ISlotResolver
         {
             return -3;
         }
-        if (Core.Me.HasMyAura(AurasDefine.NoMercy) && (SpellsDefine.Bloodfest.CoolDownInGCDs(3) || SpellsDefine.Bloodfest.IsReady())) return 0;
-        if (Core.Get<IMemApiGunBreaker>().Ammo < 3 && Core.Me.HasMyAura(AurasDefine.NoMercy) && SpellsDefine.DoubleDown.CoolDownInGCDs(4)) return -1;
-        if (Core.Me.HasMyAura(AurasDefine.NoMercy) && SpellsDefine.DoubleDown.CoolDownInGCDs(2)) return -1;
-        if (Core.Me.HasMyAura(AurasDefine.NoMercy) && SpellsDefine.DoubleDown.CoolDownInGCDs(4)&& SpellsDefine.GnashingFang.CoolDownInGCDs(3)&& Core.Get<IMemApiSpell>().GetLastComboSpellId() != SpellsDefine.BrutalShell) return -1;
-        if (Core.Get<IMemApiGunBreaker>().Ammo < 3 && Core.Me.HasMyAura(AurasDefine.NoMercy) && SpellsDefine.GnashingFang.CoolDownInGCDs(4)) return -1;
-        if (Core.Get<IMemApiGunBreaker>().Ammo > 0 && Core.Me.HasMyAura(AurasDefine.NoMercy) &&
-            !SpellsDefine.DoubleDown.IsReady()) return 0;
-        if (Core.Get<IMemApiGunBreaker>().Ammo > 0 && Core.Me.HasMyAura(AurasDefine.Medicated) &&
-            !SpellsDefine.DoubleDown.IsReady()) return 0;
+        if (Core.Me.HasMyAura(AurasDefine.NoMercy))
+        {
+            if (SpellsDefine.Bloodfest.CoolDownInGCDs(3) || SpellsDefine.Bloodfest.IsReady()) return 0;
+            if (Core.Get<IMemApiGunBreaker>().Ammo < 3)
+            {
+                if (SpellsDefine.DoubleDown.CoolDownInGCDs(4)) return -1;
+                if (SpellsDefine.GnashingFang.CoolDownInGCDs(4)) return -1;
+            }
+            if (SpellsDefine.DoubleDown.CoolDownInGCDs(2)) return -1;
+            if (SpellsDefine.DoubleDown.CoolDownInGCDs(4) && SpellsDefine.GnashingFang.CoolDownInGCDs(3) && Core.Get<IMemApiSpell>().GetLastComboSpellId() != SpellsDefine.BrutalShell) return -1;
+            if (Core.Get<IMemApiGunBreaker>().Ammo > 0 && !SpellsDefine.DoubleDown.IsReady()) return 0;
+
+        }
+        if (Core.Get<IMemApiGunBreaker>().Ammo > 0 && Core.Me.HasMyAura(AurasDefine.Medicated) && !SpellsDefine.DoubleDown.IsReady()) return 0;
         if (Qt.GetQt("×îÖÕ±¬·¢") && Core.Get<IMemApiGunBreaker>().Ammo > 0) return 2;
         if (Core.Me.ClassLevel<88)
         {
