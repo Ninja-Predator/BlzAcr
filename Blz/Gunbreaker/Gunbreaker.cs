@@ -21,7 +21,7 @@ public class GunbreakerOverlay
         if (ImGui.CollapsingHeader("起手"))
         {
             ImGui.Text("起手设置");
-            if (ImGui.Checkbox("TP开怪", ref GNBSettings.Instance.TP)) GNBSettings.Instance.Save();
+            if (ImGui.Checkbox("TP开怪（lv3可用，不到lv3就用突进开怪qt吧）", ref GNBSettings.Instance.TP)) GNBSettings.Instance.Save();
         }
 
         if (ImGui.CollapsingHeader("插入技能状态"))
@@ -103,6 +103,7 @@ public class GunbreakerOverlay
             ImGui.Text($"目标咏唱id：{Core.Me.GetCurrTarget().CastingSpellId}");
             ImGui.Text($"目标咏唱：{Core.Me.GetCurrTarget().CastSpellLocalizedName}");
             ImGui.Text($"目标上次咏唱id：{Core.Me.GetCurrTarget().LastSpellId}");
+            ImGui.TreePop();
         }
     }
 
