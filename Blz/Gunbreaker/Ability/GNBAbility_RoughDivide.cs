@@ -3,7 +3,7 @@ using CombatRoutine.Setting;
 using Common;
 using Common.Define;
 using Common.Helper;
-
+using HackBox.Features;
 
 namespace Blz.Gunbreaker.Ability;
 
@@ -26,8 +26,7 @@ public class GNBAbility_RoughDivide : ISlotResolver
 
     public void Build(Slot slot)
     {
-        Core.Get<IMemApiHack>().ChangeHack("技能无位移", true);
+        Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
         slot.Add(Core.Get<IMemApiSpell>().CheckActionChange(SpellsDefine.RoughDivide.GetSpell().Id).GetSpell());
-        Core.Get<IMemApiHack>().ChangeHack("技能无位移", false);
     }
 }

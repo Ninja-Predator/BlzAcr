@@ -1,5 +1,6 @@
 using CombatRoutine;
 using CombatRoutine.Setting;
+using Common;
 using Common.Define;
 
 namespace Blz.Gunbreaker;
@@ -32,6 +33,9 @@ public class GNBRotationEventHandler : IRotationEventHandler
         {
             case SpellsDefine.NoMercy:
                 AI.Instance.BattleData.LimitAbility = true;
+                break;
+            case SpellsDefine.RoughDivide:
+                Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", false);
                 break;
             default:
                 AI.Instance.BattleData.LimitAbility = false;

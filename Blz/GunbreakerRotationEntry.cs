@@ -110,11 +110,12 @@ public class GunbreakerRotationEntry : IRotationEntry
         jobViewWindow.AddQt("ÒÆ¶¯Ê±²»Í»½ø", true);
         jobViewWindow.AddHotkey("LB", new HotKeyResolver_LB());
         jobViewWindow.AddHotkey("³¬»ðÁ÷ÐÇ!", new HotKeyResolver_NormalSpell(16152, SpellTargetType.Self, true));
-        jobViewWindow.AddHotkey("¸ÕÓñtt", new HotKeyResolver_NormalSpell(25758, SpellTargetType.TargetTarget, true));
         jobViewWindow.AddHotkey("¸ÕÓñ×Ô¼º", new HotKeyResolver_NormalSpell(25758, SpellTargetType.Self, true));
-        jobViewWindow.AddHotkey("¸ÕÓñ¼±¾È", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/²âÊÔ.png", () =>
+        jobViewWindow.AddHotkey("¸ÕÓñtt", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñtt.png", () =>AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, SpellTargetType.TargetTarget))));
+        jobViewWindow.AddHotkey("¸ÕÓñ´ó²Ð", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñ´ó²Ð.jpg", () =>
         {
-            if (SpellsDefine.HeartOfCorundum.IsReady()){
+            if (SpellsDefine.HeartOfCorundum.IsReady())
+            {
                 int i = 1;
                 int LowIndex = 1;
                 int LowHealth = 300000;
