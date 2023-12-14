@@ -103,6 +103,8 @@ public class GunbreakerOverlay
             ImGui.Text($"目标咏唱id：{Core.Me.GetCurrTarget().CastingSpellId}");
             ImGui.Text($"目标咏唱：{Core.Me.GetCurrTarget().CastSpellLocalizedName}");
             ImGui.Text($"目标上次咏唱id：{Core.Me.GetCurrTarget().LastSpellId}");
+            ImGui.Text($"Party:{Core.Get<IMemApiParty>().GetParty()}");
+            ImGui.Text($"Party:{Core.Get<IMemApiParty>().IsInParty()}");
             ImGui.TreePop();
         }
     }

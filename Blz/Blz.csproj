@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="AEAssist">
+      <HintPath>..\..\Program Files\Flash\最终幻想XIV\XIVLauncherCN\Roaming\devPlugins\AE\AEAssistCNVersion\AEAssist\AEAssist.dll</HintPath>
+    </Reference>
     <Reference Include="CombatRoutine">
       <HintPath>..\..\Program Files\Flash\最终幻想XIV\XIVLauncherCN\Roaming\devPlugins\AE\AEAssistCNVersion\AEAssist\CombatRoutine.dll</HintPath>
       <Private>False</Private>

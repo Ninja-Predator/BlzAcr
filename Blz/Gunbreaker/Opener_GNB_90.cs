@@ -49,7 +49,7 @@ public class OpenerGNB90 : IOpener
 /*        if (Qt.GetQt("TP开怪")&& Core.Me.DistanceMelee(Core.Me.GetCurrTarget()) > SettingMgr.GetSetting<GeneralSettings>().AttackRange)
             Core.Get<IMemApiMove>().SetPos(Core.Me.GetCurrTarget().front());*/
         slot.Add(new Spell(SpellsDefine.KeenEdge, SpellTargetType.Target));
-        slot.Add(new SlotAction(SlotAction.WaitType.WaitInMs, 500, SpellsDefine.NoMercy.GetSpell()));
+        slot.Add(new SlotAction(SlotAction.WaitType.WaitInMs, 800, SpellsDefine.NoMercy.GetSpell()));
     }
 
 
@@ -63,7 +63,9 @@ public class OpenerGNB90 : IOpener
     private static void Step2(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.SolidBarrel, SpellTargetType.Target));
+        Core.Get<IMemApiHack>().ChangeHack("技能无位移", true);
         if (SpellsDefine.RoughDivide.IsReady()) slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
+        Core.Get<IMemApiHack>().ChangeHack("技能无位移", false);
     }
 
 
@@ -86,14 +88,18 @@ public class OpenerGNB90 : IOpener
     private static void Step5(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.SonicBreak, SpellTargetType.Target));
-        if(SpellsDefine.RoughDivide.IsReady()) slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
+        Core.Get<IMemApiHack>().ChangeHack("技能无位移", true);
+        if (SpellsDefine.RoughDivide.IsReady()) slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
+        Core.Get<IMemApiHack>().ChangeHack("技能无位移", false);
         slot.Add(new Spell(SpellsDefine.BowShock, SpellTargetType.Target));
     }
 
     private static void Step6(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.DoubleDown, SpellTargetType.Target));
+        Core.Get<IMemApiHack>().ChangeHack("技能无位移", true);
         if (SpellsDefine.RoughDivide.IsReady()) slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
+        Core.Get<IMemApiHack>().ChangeHack("技能无位移", false);
     }
 
     private static void Step7(Slot slot)

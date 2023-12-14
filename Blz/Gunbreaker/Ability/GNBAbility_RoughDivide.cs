@@ -26,6 +26,8 @@ public class GNBAbility_RoughDivide : ISlotResolver
 
     public void Build(Slot slot)
     {
+        Core.Get<IMemApiHack>().ChangeHack("技能无位移", true);
         slot.Add(Core.Get<IMemApiSpell>().CheckActionChange(SpellsDefine.RoughDivide.GetSpell().Id).GetSpell());
+        Core.Get<IMemApiHack>().ChangeHack("技能无位移", false);
     }
 }

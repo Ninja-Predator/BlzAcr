@@ -11,6 +11,7 @@ using CombatRoutine.View.JobView;
 using System.Security.AccessControl;
 using Common.Helper;
 using Blz.Gunbreaker.Triggers;
+using CombatRoutine.Setting;
 
 namespace Blz;
 
@@ -107,11 +108,31 @@ public class GunbreakerRotationEntry : IRotationEntry
         jobViewWindow.AddQt("起手突进开怪", false);
         jobViewWindow.AddQt("突进全进无情", true);
         jobViewWindow.AddQt("移动时不突进", true);
-
         jobViewWindow.AddHotkey("LB", new HotKeyResolver_LB());
         jobViewWindow.AddHotkey("超火流星!", new HotKeyResolver_NormalSpell(16152, SpellTargetType.Self, true));
         jobViewWindow.AddHotkey("刚玉tt", new HotKeyResolver_NormalSpell(25758, SpellTargetType.TargetTarget, true));
         jobViewWindow.AddHotkey("刚玉自己", new HotKeyResolver_NormalSpell(25758, SpellTargetType.Self, true));
+        jobViewWindow.AddHotkey("刚玉急救", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/测试.png", () =>
+        {
+            if (SpellsDefine.HeartOfCorundum.IsReady()){
+                int i = 1;
+                int LowIndex = 1;
+                int LowHealth = 300000;
+                List<CharacterAgent> agents = Core.Get<IMemApiParty>().GetParty();
+                agents.ForEach(p =>
+                {
+                    if (p.CurrentHealth < LowHealth&&p.CurrentHealthPercent<99.9)
+                    {
+                        LowHealth = ((int)p.CurrentHealth);
+                        LowIndex = i;
+                    }
+                    i++;
+                });
+                SpellTargetType t = (SpellTargetType)Enum.Parse(typeof(SpellTargetType), (LowIndex + 3).ToString());
+                AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, t));
+            }
+        }
+        ));
         return true;
     }
 }
