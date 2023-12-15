@@ -35,7 +35,8 @@ public class GNBRotationEventHandler : IRotationEventHandler
                 AI.Instance.BattleData.LimitAbility = true;
                 break;
             case SpellsDefine.RoughDivide:
-                Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", false);
+                if (GNBSettings.Instance.RoughDivideNoMove)
+                    Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", false);
                 break;
             default:
                 AI.Instance.BattleData.LimitAbility = false;

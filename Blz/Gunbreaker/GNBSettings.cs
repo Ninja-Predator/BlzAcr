@@ -37,7 +37,8 @@ public class GNBSettings
         File.WriteAllText(path, JsonHelper.ToJson(this));
     }
 
-    public int Time = 200;
+    public int Time = 450;
+    public bool RoughDivideNoMove = true;
     public bool TP = false;
 
     public JobViewSave JobViewSave = new() { MainColor = new Vector4(47 / 255f, 118 / 255f, 161 / 255f, 0.8f) };

@@ -23,18 +23,13 @@ public class GunbreakerRotationEntry : IRotationEntry
 
     public AcrType AcrType { get; } = AcrType.HighEnd;
 
-    public void DrawOverlay()
-    {
-
-    }
-
     public string AuthorName { get; } = "Blz";
     public Jobs TargetJob { get; } = Jobs.Gunbreaker;
 
     public List<ISlotResolver> SlotResolvers = new()
     {
-        new GNBGCD_DoubleDown(),
         new GNBGCD_SonicBreak(),
+        new GNBGCD_DoubleDown(),
         new GNBGCD_LightningShot(),
         new GNBGCD_GnashingFang(),
         new GNBGCD_BurstStrike(),
@@ -111,29 +106,56 @@ public class GunbreakerRotationEntry : IRotationEntry
         jobViewWindow.AddHotkey("LB", new HotKeyResolver_LB());
         jobViewWindow.AddHotkey("³¬»ðÁ÷ÐÇ!", new HotKeyResolver_NormalSpell(16152, SpellTargetType.Self, true));
         jobViewWindow.AddHotkey("¸ÕÓñ×Ô¼º", new HotKeyResolver_NormalSpell(25758, SpellTargetType.Self, true));
-        jobViewWindow.AddHotkey("¸ÕÓñtt", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñtt.png", () =>AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, SpellTargetType.TargetTarget))));
+        jobViewWindow.AddHotkey("¸ÕÓñtt", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñtt.png", () => {
+            if (AI.Instance.BattleData.HighPrioritySlots_OffGCD.Count > 0)
+            {
+                foreach (var spell in AI.Instance.BattleData.HighPrioritySlots_OffGCD)
+                {
+                    if (spell.Id == SpellsDefine.HeartOfCorundum)
+                    {
+                        return;
+                    }
+                }
+            }
+            AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, SpellTargetType.TargetTarget)); 
+        }));
         jobViewWindow.AddHotkey("¸ÕÓñ´ó²Ð", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñ´ó²Ð.jpg", () =>
         {
+            if (AI.Instance.BattleData.HighPrioritySlots_OffGCD.Count > 0)
+            {
+                foreach (var spell in AI.Instance.BattleData.HighPrioritySlots_OffGCD)
+                {
+                    if (spell.Id == SpellsDefine.HeartOfCorundum)
+                    {
+                        return;
+                    }
+                }
+            }
             if (SpellsDefine.HeartOfCorundum.IsReady())
             {
-                int i = 1;
-                int LowIndex = 1;
-                int LowHealth = 300000;
-                List<CharacterAgent> agents = Core.Get<IMemApiParty>().GetParty();
-                agents.ForEach(p =>
-                {
-                    if (p.CurrentHealth < LowHealth&&p.CurrentHealthPercent<99.9)
-                    {
-                        LowHealth = ((int)p.CurrentHealth);
-                        LowIndex = i;
-                    }
-                    i++;
-                });
-                SpellTargetType t = (SpellTargetType)Enum.Parse(typeof(SpellTargetType), (LowIndex + 3).ToString());
-                AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, t));
+                AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, WhoNeedsHealing()));
             }
         }
         ));
         return true;
+    }
+
+    private SpellTargetType WhoNeedsHealing()
+    {
+        int i = 1;
+        int LowIndex = 1;
+        int LowHealth = 300000;
+        List<CharacterAgent> agents = Core.Get<IMemApiParty>().GetParty();
+        agents.ForEach(p =>
+        {
+            if (p.CurrentHealth < LowHealth && p.CurrentHealthPercent < 99.9 && !p.IsDead)
+            {
+                LowHealth = ((int)p.CurrentHealth);
+                LowIndex = i;
+            }
+            i++;
+        });
+        SpellTargetType t = (SpellTargetType)Enum.Parse(typeof(SpellTargetType), (LowIndex + 3).ToString());
+        return t;
     }
 }

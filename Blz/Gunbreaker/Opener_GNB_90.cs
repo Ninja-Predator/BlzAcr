@@ -12,12 +12,14 @@ public class OpenerGNB90 : IOpener
     public int StartCheck()
     {
         //return -1;
-        if (PartyHelper.NumMembers <= 4 && !Core.Me.GetCurrTarget().IsDummy())
+        if (!Core.Me.GetCurrTarget().IsBoss() && !Core.Me.GetCurrTarget().IsDummy())
             return -100;
         if (!SpellsDefine.NoMercy.IsReady())
             return -4;
         if (!SpellsDefine.Bloodfest.IsReady())
             return -4;
+        if (Core.Get<IMemApiGunBreaker>().Ammo > 0)
+            return -1;
         return 0;
     }
 
@@ -63,7 +65,8 @@ public class OpenerGNB90 : IOpener
     private static void Step2(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.SolidBarrel, SpellTargetType.Target));
-        Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
+        if(GNBSettings.Instance.RoughDivideNoMove)
+            Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
         if (SpellsDefine.RoughDivide.IsReady()) slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
     }
 
@@ -87,16 +90,22 @@ public class OpenerGNB90 : IOpener
     private static void Step5(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.SonicBreak, SpellTargetType.Target));
-        Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
-        if (SpellsDefine.RoughDivide.IsReady()) slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
+        if (SpellsDefine.RoughDivide.IsReady()) {
+            if (GNBSettings.Instance.RoughDivideNoMove)
+                Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
+            slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target)); 
+        }
         slot.Add(new Spell(SpellsDefine.BowShock, SpellTargetType.Target));
     }
 
     private static void Step6(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.DoubleDown, SpellTargetType.Target));
-        Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
-        if (SpellsDefine.RoughDivide.IsReady()) slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
+        if (SpellsDefine.RoughDivide.IsReady()) {
+            if (GNBSettings.Instance.RoughDivideNoMove)
+                Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
+            slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target)); 
+        }
     }
 
     private static void Step7(Slot slot)
@@ -115,7 +124,6 @@ public class OpenerGNB90 : IOpener
 
     public void InitCountDown(CountDownHandler countDownHandler)
     {
-        //countDownHandler.AddPotionAction(1500);
         countDownHandler.AddAction(GNBSettings.Instance.Time, () => GNBSpellHelper.GetOpen());
     }
 }
