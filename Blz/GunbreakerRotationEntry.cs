@@ -114,7 +114,10 @@ public class GunbreakerRotationEntry : IRotationEntry
                     }
                 }
             }
-            AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, SpellTargetType.TargetTarget));
+            if (SpellsDefine.HeartOfCorundum.IsReady())
+            {
+                AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, SpellTargetType.TargetTarget));
+            }
         }));
         jobViewWindow.AddHotkey("¸ÕÓñ´ó²Ð", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñ´ó²Ð.jpg", () =>
         {

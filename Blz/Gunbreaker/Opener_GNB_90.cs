@@ -43,7 +43,7 @@ public class OpenerGNB90 : IOpener
     public Action CompeltedAction { get; set; }
 
 
-    public int StepCount => 6;
+    public int StepCount => 9;
 
     private static void Step0(Slot slot)
     {
