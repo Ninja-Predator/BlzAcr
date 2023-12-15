@@ -19,15 +19,15 @@ public class GNBGCD_GnashingFang : ISlotResolver
 
     public int Check()
     {
-        if (!CheckSpell()) 
+        if (!CheckSpell())
             return -1;
         if (!Qt.GetQt("爆发"))
             return -2;
-        if (!Qt.GetQt("子弹连")) 
+        if (!Qt.GetQt("子弹连"))
             return -1;
-        if (Core.Me.ClassLevel>=90)
+        if (Core.Me.ClassLevel >= 90)
         {
-            if (SpellsDefine.DoubleDown.CoolDownInGCDs(3)&& Core.Get<IMemApiGunBreaker>().Ammo < 2)
+            if (SpellsDefine.DoubleDown.CoolDownInGCDs(3) && Core.Get<IMemApiGunBreaker>().Ammo < 2)
             {
                 return -1;
             }

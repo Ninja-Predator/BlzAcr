@@ -20,7 +20,7 @@ public class OpenerGNB70_Ucob : IOpener
             return -4;
         if (!SpellsDefine.DangerZone.IsReady())
             return -4;
-        if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId()!=733) return -3;
+        if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId() != 733) return -3;
         return 0;
     }
 
@@ -53,7 +53,7 @@ public class OpenerGNB70_Ucob : IOpener
     private static void Step1(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.BrutalShell, SpellTargetType.Target));
-        if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId()==733)
+        if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId() == 733)
         {
             slot.Add(new Spell(SpellsDefine.HeartofLight, SpellTargetType.Self));
         }
@@ -66,7 +66,7 @@ public class OpenerGNB70_Ucob : IOpener
         slot.Add(new Spell(SpellsDefine.SonicBreak, SpellTargetType.Target));
         slot.Add(new Spell(SpellsDefine.BowShock, SpellTargetType.Target));
         slot.Add(new Spell(SpellsDefine.DangerZone, SpellTargetType.Target));
-        
+
     }
 
 

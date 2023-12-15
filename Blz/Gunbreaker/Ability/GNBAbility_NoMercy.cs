@@ -1,5 +1,4 @@
 using CombatRoutine;
-using CombatRoutine.Setting;
 using Common;
 using Common.Define;
 

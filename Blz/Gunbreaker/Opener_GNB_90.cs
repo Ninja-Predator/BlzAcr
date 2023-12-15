@@ -1,6 +1,5 @@
 ﻿using CombatRoutine;
 using CombatRoutine.Opener;
-using CombatRoutine.Setting;
 using Common;
 using Common.Define;
 using Common.Helper;
@@ -48,8 +47,8 @@ public class OpenerGNB90 : IOpener
 
     private static void Step0(Slot slot)
     {
-/*        if (Qt.GetQt("TP开怪")&& Core.Me.DistanceMelee(Core.Me.GetCurrTarget()) > SettingMgr.GetSetting<GeneralSettings>().AttackRange)
-            Core.Get<IMemApiMove>().SetPos(Core.Me.GetCurrTarget().front());*/
+        /*        if (Qt.GetQt("TP开怪")&& Core.Me.DistanceMelee(Core.Me.GetCurrTarget()) > SettingMgr.GetSetting<GeneralSettings>().AttackRange)
+                    Core.Get<IMemApiMove>().SetPos(Core.Me.GetCurrTarget().front());*/
         slot.Add(new Spell(SpellsDefine.KeenEdge, SpellTargetType.Target));
         slot.Add(new SlotAction(SlotAction.WaitType.WaitInMs, 800, SpellsDefine.NoMercy.GetSpell()));
     }
@@ -65,7 +64,7 @@ public class OpenerGNB90 : IOpener
     private static void Step2(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.SolidBarrel, SpellTargetType.Target));
-        if(GNBSettings.Instance.RoughDivideNoMove)
+        if (GNBSettings.Instance.RoughDivideNoMove)
             Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
         if (SpellsDefine.RoughDivide.IsReady()) slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
     }
@@ -90,10 +89,11 @@ public class OpenerGNB90 : IOpener
     private static void Step5(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.SonicBreak, SpellTargetType.Target));
-        if (SpellsDefine.RoughDivide.IsReady()) {
+        if (SpellsDefine.RoughDivide.IsReady())
+        {
             if (GNBSettings.Instance.RoughDivideNoMove)
                 Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
-            slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target)); 
+            slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
         }
         slot.Add(new Spell(SpellsDefine.BowShock, SpellTargetType.Target));
     }
@@ -101,10 +101,11 @@ public class OpenerGNB90 : IOpener
     private static void Step6(Slot slot)
     {
         slot.Add(new Spell(SpellsDefine.DoubleDown, SpellTargetType.Target));
-        if (SpellsDefine.RoughDivide.IsReady()) {
+        if (SpellsDefine.RoughDivide.IsReady())
+        {
             if (GNBSettings.Instance.RoughDivideNoMove)
                 Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
-            slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target)); 
+            slot.Add(new Spell(SpellsDefine.RoughDivide, SpellTargetType.Target));
         }
     }
 

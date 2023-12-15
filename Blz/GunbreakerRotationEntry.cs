@@ -1,17 +1,13 @@
-using System.Reflection;
-using CombatRoutine;
-using CombatRoutine.Opener;
-using Common;
-using Common.Define;
-using Common.Language;
 using Blz.Gunbreaker;
 using Blz.Gunbreaker.Ability;
 using Blz.Gunbreaker.GCD;
-using CombatRoutine.View.JobView;
-using System.Security.AccessControl;
-using Common.Helper;
 using Blz.Gunbreaker.Triggers;
-using CombatRoutine.Setting;
+using CombatRoutine;
+using CombatRoutine.Opener;
+using CombatRoutine.View.JobView;
+using Common;
+using Common.Define;
+using Common.Language;
 
 namespace Blz;
 
@@ -63,16 +59,16 @@ public class GunbreakerRotationEntry : IRotationEntry
             return opener90;
         if (level >= 70)
         {
-            if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId()==733)
+            if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId() == 733)
             {
                 return opener70_ucob;
             }
 
-            if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId()==777)
+            if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId() == 777)
             {
                 return opener70_uwu;
             }
-            if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId()==612)
+            if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId() == 612)
             {
                 return opener70_uwu;
             }
@@ -106,7 +102,8 @@ public class GunbreakerRotationEntry : IRotationEntry
         jobViewWindow.AddHotkey("LB", new HotKeyResolver_LB());
         jobViewWindow.AddHotkey("³¬»ðÁ÷ÐÇ!", new HotKeyResolver_NormalSpell(16152, SpellTargetType.Self, true));
         jobViewWindow.AddHotkey("¸ÕÓñ×Ô¼º", new HotKeyResolver_NormalSpell(25758, SpellTargetType.Self, true));
-        jobViewWindow.AddHotkey("¸ÕÓñtt", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñtt.png", () => {
+        jobViewWindow.AddHotkey("¸ÕÓñtt", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñtt.png", () =>
+        {
             if (AI.Instance.BattleData.HighPrioritySlots_OffGCD.Count > 0)
             {
                 foreach (var spell in AI.Instance.BattleData.HighPrioritySlots_OffGCD)
@@ -117,7 +114,7 @@ public class GunbreakerRotationEntry : IRotationEntry
                     }
                 }
             }
-            AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, SpellTargetType.TargetTarget)); 
+            AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, SpellTargetType.TargetTarget));
         }));
         jobViewWindow.AddHotkey("¸ÕÓñ´ó²Ð", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñ´ó²Ð.jpg", () =>
         {

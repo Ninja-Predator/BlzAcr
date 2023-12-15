@@ -1,10 +1,6 @@
-using System.Numerics;
 using CombatRoutine;
-using CombatRoutine.Setting;
-using CombatRoutine.View;
 using CombatRoutine.View.JobView;
 using Common;
-using Common.Define;
 using Common.GUI;
 using Common.Helper;
 using Common.Language;

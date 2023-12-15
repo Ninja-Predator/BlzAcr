@@ -1,4 +1,3 @@
-using CombatRoutine;
 using CombatRoutine.TriggerModel;
 using Common.Language;
 
@@ -12,10 +11,10 @@ public class TriggerActionSwitchButton : ITriggerAction
         枪刃_突进开关,
         枪刃_子弹连,
         枪刃_爆发击,
-        
+
     }
-    public ButtonType button{ get; set; }
-    public bool Open{ get; set; }
+    public ButtonType button { get; set; }
+    public bool Open { get; set; }
     public string DisplayName => "[Blz枪刃]切换开关状态".Loc();
     public string Remark { get; set; }
     public void Check()

@@ -19,7 +19,7 @@ public class OpenerGNB70_UwU : IOpener
             return -4;
         if (!SpellsDefine.DangerZone.IsReady())
             return -4;
-        if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId()!=777) return -3;
+        if (Core.Get<IMemApiZoneInfo>().GetCurrTerrId() != 777) return -3;
         return 0;
     }
 
@@ -50,7 +50,7 @@ public class OpenerGNB70_UwU : IOpener
         Core.Get<IMemApiMove>().SetPos(Core.Me.GetCurrTarget().front());
         slot.Add(new Spell(SpellsDefine.KeenEdge, SpellTargetType.Target));//1
         slot.Add(new Spell(SpellsDefine.Reprisal, SpellTargetType.Target));//雪仇
-        
+
     }
 
 

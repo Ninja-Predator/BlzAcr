@@ -24,7 +24,8 @@ public class GNBGCD_BaseGCD : ISlotResolver
         }
         if (Core.Get<IMemApiSpell>().GetLastComboSpellId() == SpellsDefine.KeenEdge)
         {
-            if(Core.Me.ClassLevel < 88) {
+            if (Core.Me.ClassLevel < 88)
+            {
                 if (Core.Get<IMemApiGunBreaker>().Ammo == 2)
                 {
                     if (SpellsDefine.NoMercy.GetSpell().CoolDownInGCDs(2) && !SpellsDefine.NoMercy.GetSpell().CoolDownInGCDs(1) && Qt.GetQt("±¬·¢"))
@@ -39,7 +40,7 @@ public class GNBGCD_BaseGCD : ISlotResolver
                         return SpellsDefine.KeenEdge.GetSpell();
                 }
             }
-            
+
         }
         if (Core.Get<IMemApiSpell>().GetLastComboSpellId() == SpellsDefine.BrutalShell)
             return SpellsDefine.SolidBarrel.GetSpell();

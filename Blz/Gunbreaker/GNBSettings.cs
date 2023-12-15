@@ -1,7 +1,6 @@
 ﻿using CombatRoutine.View.JobView;
-
-using System.Numerics;
 using Common.Helper;
+using System.Numerics;
 
 namespace Blz.Gunbreaker;
 

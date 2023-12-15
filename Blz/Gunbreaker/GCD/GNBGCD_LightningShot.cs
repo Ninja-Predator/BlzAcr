@@ -15,10 +15,10 @@ public class GNBGCD_LightningShot : ISlotResolver
         if (Core.Me.DistanceMelee(Core.Me.GetCurrTarget()) > SettingMgr.GetSetting<GeneralSettings>().AttackRange)
             if (Qt.GetQt("ÉÁÀ×µ¯"))
                 return 0;
-/*        if (Core.Get<IMemApiSpell>().GetLastComboSpellId() == SpellsDefine.BrutalShell)
-            if (Core.Get<IMemApiGunBreaker>().Ammo == 3)
-                if (SpellsDefine.NoMercy.GetSpell().CoolDownInGCDs(1) && Qt.GetQt("±¬·¢"))
-                    return 0;*/
+        /*        if (Core.Get<IMemApiSpell>().GetLastComboSpellId() == SpellsDefine.BrutalShell)
+                    if (Core.Get<IMemApiGunBreaker>().Ammo == 3)
+                        if (SpellsDefine.NoMercy.GetSpell().CoolDownInGCDs(1) && Qt.GetQt("±¬·¢"))
+                            return 0;*/
         return -1;
     }
 

@@ -46,7 +46,7 @@ public class GNBGCD_BurstStrike : ISlotResolver
         }
         if (Core.Get<IMemApiGunBreaker>().Ammo > 0 && Core.Me.HasMyAura(AurasDefine.Medicated) && !SpellsDefine.DoubleDown.IsReady()) return 0;
         if (Qt.GetQt("×îÖÕ±¬·¢") && Core.Get<IMemApiGunBreaker>().Ammo > 0) return 2;
-        if (Core.Me.ClassLevel<88)
+        if (Core.Me.ClassLevel < 88)
         {
             if (Core.Get<IMemApiGunBreaker>().Ammo < 2) return -1;
         }
