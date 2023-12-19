@@ -104,36 +104,43 @@ public class GunbreakerRotationEntry : IRotationEntry
         jobViewWindow.AddHotkey("¸ÕÓñ×Ô¼º", new HotKeyResolver_NormalSpell(25758, SpellTargetType.Self, true));
         jobViewWindow.AddHotkey("¸ÕÓñtt", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñtt.png", () =>
         {
+            uint heartOfCorundum;
+            if (Core.Me.ClassLevel >= 82) heartOfCorundum = SpellsDefine.HeartOfCorundum;
+            else heartOfCorundum = SpellsDefine.HeartofStone;
             if (AI.Instance.BattleData.HighPrioritySlots_OffGCD.Count > 0)
             {
                 foreach (var spell in AI.Instance.BattleData.HighPrioritySlots_OffGCD)
                 {
-                    if (spell.Id == SpellsDefine.HeartOfCorundum)
+                    
+                    if (spell.Id == heartOfCorundum)
                     {
                         return;
                     }
                 }
             }
-            if (SpellsDefine.HeartOfCorundum.IsReady())
+            if (heartOfCorundum.IsReady())
             {
-                AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, SpellTargetType.TargetTarget));
+                AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(heartOfCorundum, SpellTargetType.TargetTarget));
             }
         }));
         jobViewWindow.AddHotkey("¸ÕÓñ´ó²Ð", new HotkeyResolver_General(@"../../RotationPlugin/Blz/Resources/¸ÕÓñ´ó²Ð.jpg", () =>
         {
+            uint heartOfCorundum;
+            if (Core.Me.ClassLevel >= 82) heartOfCorundum = SpellsDefine.HeartOfCorundum;
+            else heartOfCorundum = SpellsDefine.HeartofStone;
             if (AI.Instance.BattleData.HighPrioritySlots_OffGCD.Count > 0)
             {
                 foreach (var spell in AI.Instance.BattleData.HighPrioritySlots_OffGCD)
                 {
-                    if (spell.Id == SpellsDefine.HeartOfCorundum)
+                    if (spell.Id == heartOfCorundum)
                     {
                         return;
                     }
                 }
             }
-            if (SpellsDefine.HeartOfCorundum.IsReady())
+            if (heartOfCorundum.IsReady())
             {
-                AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(SpellsDefine.HeartOfCorundum, WhoNeedsHealing()));
+                AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellHelper.GetSpell(heartOfCorundum, WhoNeedsHealing()));
             }
         }
         ));

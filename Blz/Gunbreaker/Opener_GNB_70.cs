@@ -44,7 +44,6 @@ public class OpenerGNB70_Ucob : IOpener
 
     private static void Step0(Slot slot)
     {
-        Core.Get<IMemApiMove>().SetPos(Core.Me.GetCurrTarget().front());
         slot.Add(new Spell(SpellsDefine.KeenEdge, SpellTargetType.Target));
         if (Qt.GetQt("爆发药")) slot.Add(Spell.CreatePotion());
     }

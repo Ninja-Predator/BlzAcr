@@ -18,12 +18,17 @@ public class GNBAbility_RoughDivide : ISlotResolver
         if (Core.Me.HasMyAura(AurasDefine.NoMercy)) return 1;
         if (SpellsDefine.RoughDivide.GetSpell().Charges < 1.9)
             return -1;
+        if (SpellsDefine.RoughDivide.RecentlyUsed()) return -1;
         return 0;
     }
 
     public void Build(Slot slot)
     {
-        Core.Get<IMemApiHack>().ChangeHack("技能无位移 (Lv4)", true);
+        if (!GNBBattleData.Instance.isRoughDivideInQueue)
+        {
+            GNBBattleData.Instance.isRoughDivideInQueue = true;
+            Core.Get<IMemApiHack>().ChangeHack("技能无位移", true);
+        }
         slot.Add(Core.Get<IMemApiSpell>().CheckActionChange(SpellsDefine.RoughDivide.GetSpell().Id).GetSpell());
     }
 }
